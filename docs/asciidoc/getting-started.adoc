@@ -1,0 +1,63 @@
+= Getting Started
+
+These steps are required in order to start writing your first Slack App.
+
+=== Sample applications
+
+If you want to start right ahead have a look at one of our Sample Applications
+(https://github.com/olaph-io/slack-spring-boot-starter/tree/master/samples[Sample Applications])
+
+=== Creating your Slack App
+
+Go to https://api.slack.com/ and create a new Slack App.
+
+You'll need to set-up your App on the Slack API page.
+
+At this point you might want to use a service like ngrok or any other tunneling software in order to enable forwarding to your local environment.
+
+=== Configuring your Slack App
+
+Activate *Incoming Webhooks* in order to enable the installation process of your App later on.
+
+Head over to the *Interactive Components*, activate that feature and enter your desired Request URL.
+(e.g. https://samplebot.eu.ngrok.io/interactive-components)
+
+Go to *Slash Commands* and create a new command.
+In this example we will implement a basic Ping command, which will respond with a Pong chat message.
+
+Create a Bot User and give it a name. Set it to be displayed as always online if prefered.
+
+When everything is set up you can add the App to a Workspace under OAuth & Permissions.
+
+After you added your App to a Workspace you'll see a OAuth Access Token and a Bot User OAuth Access Token.
+These will be required in later steps in order to interact with the Slack API.
+
+=== Writing the App
+
+Use the https://start.spring.io/[Spring Initializr] to create a new Gradle Project
+(Gradle Project, Kotlin, Latest Version) and add the *Web dependency*
+
+The Spring Starter zip-file has to be extracted and the gradle build file should be placed in your project root folder.
+Move the src folder contents considering the intern packaging folders to your kotlin main path in the projects src folder.
+
+Ultimatively you'll find your Application.kt (name can differ) with your main function in that folder and you're all set to run your application.
+
+Now that you have the SampleApplication running you can start adding a Command-Receiver.
+
+In this example we are using a simple ping command.
+
+Add this command receiver to handle the Ping-Command.
+
+[source,kotlin]
+----
+include::../../samples/spring-boot-sample/src/main/kotlin/io/olaph/sample/commands/ping/PingCommandReceiver.kt[]
+----
+
+This receiver implements the SlashCommandReceiver Interface and you need to override the supportsCommand and onReceiveSlashCommand functions.
+
+The supportsCommand-function returns true if the underlying CommandBroker @RestController recognizes the command-String of our SlackCommand Data Class.
+Since our CommandBroker has a @PostMapping-Annotation it's basically listening for every command that is posted to the /commands endpoint.
+
+
+
+

@@ -1,0 +1,43 @@
+= Structure
+The basic structure of this project consists of Broker, Client and Data packages.
+
+== Broker
+The broker packages is divided in broker, configuration, exception and receiver packages.
+
+=== broker
+..
+
+=== configuration
+..
+
+=== exception
+..
+
+=== receiver
+..
+
+
+== Client
+
+=== Slack API Client
+
+Interfaces containing declarations for the abstract classes for the later implementation inside the implementation-package.
+See <<Spring API Client>>
+
+=== Spring API Client
+
+Default implementations for the Slack Api Client interfaces.
+
+=== Spring API Client Tests
+
+Testing the functionality of the implementations using Mockito and JUnit5
+
+== Data
+
+=== Data Classes
+
+Data classes in compliance the Slack API
+
+=== Extension Functions
+
+Extensions on Data Classes for better testing using sample functions.
