@@ -1,10 +1,5 @@
 :source-highlighter: prettify
 
-
-include::./introduction.adoc[]
-include::./getting-started.adoc[]
-
-
 // Broker Package Directories
 //  slack-broker-spring-boot
 :broker-basedir: ../../broker/slack-broker-spring-boot/src/main/kotlin/io/olaph/slack/broker/
