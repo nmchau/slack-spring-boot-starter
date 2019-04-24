@@ -1,2 +1,7 @@
+# Initializers
+org.springframework.context.ApplicationContextInitializer=\
+io.olaph.slack.broker.autoconfiguration.logging.EvaluationReportLoggingListener
+# Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 io.olaph.slack.broker.autoconfiguration.SlackBrokerAutoConfiguration
+
