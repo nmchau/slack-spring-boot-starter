@@ -1,5 +1,7 @@
 package io.olaph.slack.client.group.chat
 
+import io.olaph.slack.dto.jackson.group.chat.SlackPostEphemeralRequest
+
 interface ChatMethodGroup {
 
     //TODO DOC
@@ -23,5 +25,6 @@ interface ChatMethodGroup {
     //TODO DOC
     fun update(authToken: String): ChatUpdateMethod
 
-    fun respondToUrl(body: Any?, responseUrl: String)
+    //TODO DOC
+    fun respondToUrl(responseUrl: String): ChatRespondEphemeralMethod
 }

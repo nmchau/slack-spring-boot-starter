@@ -5,11 +5,6 @@ import io.olaph.slack.client.group.chat.ChatMethodGroup
 import io.olaph.slack.client.group.chat.ChatUnfurlMethod
 import io.olaph.slack.client.group.chat.GetChatPermalinkMethod
 import org.slf4j.LoggerFactory
-import org.springframework.http.HttpMethod
-import org.springframework.http.RequestEntity
-import org.springframework.web.client.RestTemplate
-import org.springframework.web.client.exchange
-import java.net.URI
 
 class DefaultChatMethodGroup : ChatMethodGroup {
     override fun getPermalink(authToken: String): GetChatPermalinkMethod {
@@ -44,12 +39,7 @@ class DefaultChatMethodGroup : ChatMethodGroup {
         return DefaultUpdateMethod(authToken)
     }
 
-    override fun respondToUrl(body: Any?, responseUrl: String) {
-        val uri = URI.create(responseUrl)
-
-        val requestEntity = RequestEntity(body, HttpMethod.POST, uri)
-        val response = RestTemplate().exchange<String>(requestEntity)
-        if (!response.statusCode.is2xxSuccessful)
-            LOG.error("failed to respond to url statuscode: ${response.statusCode.value()}")
+    override fun respondToUrl(responseUrl: String): DefaultRespondEphemeralMethod {
+        return DefaultRespondEphemeralMethod(responseUrl)
     }
 }
