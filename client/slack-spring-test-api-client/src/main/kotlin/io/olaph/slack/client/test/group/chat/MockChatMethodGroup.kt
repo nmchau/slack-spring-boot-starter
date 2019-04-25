@@ -7,6 +7,9 @@ import io.olaph.slack.client.group.chat.ChatUpdateMethod
 import io.olaph.slack.client.group.chat.GetChatPermalinkMethod
 
 class MockChatMethodGroup : ChatMethodGroup {
+    override fun respondToUrl(body: Any?, responseUrl: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private val mockChatPostEphemeralMethod = MockChatPostEphemeral()
     private val mockChatPostMessageMethod = MockChatPostMessage()

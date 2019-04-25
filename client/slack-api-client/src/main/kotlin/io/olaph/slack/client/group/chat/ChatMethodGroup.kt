@@ -22,4 +22,6 @@ interface ChatMethodGroup {
 
     //TODO DOC
     fun update(authToken: String): ChatUpdateMethod
+
+    fun respondToUrl(body: Any?, responseUrl: String)
 }
